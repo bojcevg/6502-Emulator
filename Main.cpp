@@ -9,6 +9,11 @@ struct Memory
     static const int MAX_MEM = 1024 * 64; //This is because there are 1024 8 byte addresses in the emulated memory
     Byte Data[MAX_MEM];
 
+    Byte operator[](int index)
+    {
+        return Data[index];
+    }
+
     void intitialize()
     {
         for( int i = 0; i < MAX_MEM; i++ )
@@ -48,8 +53,21 @@ struct CPU
         Y = 0;
 
         mem.intitialize();
+    }
 
+    Byte FetchByte( Memory& mem )
+    {
+        Byte data = mem[PC]; //pulls the current instruction waiting to be executed
+        PC++; //moves the program counter to the next instruction
+        return data;
 
+    }
+    void execute(Memory& mem, int cycles)
+    {
+        for(int i  = cycles; i > 0; i--)
+        {
+            Byte instruction = FetchByte( mem );
+        }
     }
 
 };
@@ -61,5 +79,6 @@ int main()
     Memory mem;
 
     cpu.reset(mem);
+    cpu.execute(mem, 2);
     return 0;
 }
