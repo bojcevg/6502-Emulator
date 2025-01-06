@@ -1,8 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-using Byte = unsigned char;
-using Word = unsigned short;
+typedef unsigned char Byte;
+typedef unsigned int Word;
+
+struct Memory
+{
+    static const int MAX_MEM = 1024 * 64; //This is because there are 1024 8 byte addresses in the emulated memory
+    Byte Data[MAX_MEM];
+
+    void intitialize()
+    {
+        for( int i = 0; i < MAX_MEM; i++ )
+        {
+            Data[i] = 0;
+        }
+    }
+
+};
 
 struct CPU
 {
@@ -20,10 +35,31 @@ struct CPU
     Byte V : 1; //Overflow, set if an arithmetic operaiton resulted in an invalid 2's complement
     Byte N : 1; //Negative, set if the last operation was negative (Bit 7 is set to 1)
 
+    void reset(Memory& mem)
+    {
+        PC = 0xFFFC; //Where the CPU will initially look for an instruction
+        SP = 0x0100; 
+
+        C = Z = I = D = B = V = N = 0; //Clears PS bitmap
+        
+        //Clears Registers
+        A = 0;
+        X = 0;
+        Y = 0;
+
+        mem.intitialize();
+
+
+    }
+
 };
+
 
 int main()
 {
+    CPU cpu; 
+    Memory mem;
 
+    cpu.reset(mem);
     return 0;
 }
