@@ -1,0 +1,12 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/bojcevg/Projects/6502-Emulator/Main'
+relocations:
+  - { offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003BB4, symSize: 0xCC }
+  - { offset: 0x212, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003BB4, symSize: 0xCC }
+  - { offset: 0x248, size: 0x8, addend: 0x0, symName: __ZN3CPU5resetER6Memory, symObjAddr: 0xCC, symBinAddr: 0x100003C80, symSize: 0xBC }
+  - { offset: 0x27A, size: 0x8, addend: 0x0, symName: __ZN6MemoryixEi, symObjAddr: 0x188, symBinAddr: 0x100003D3C, symSize: 0x20 }
+  - { offset: 0x2AC, size: 0x8, addend: 0x0, symName: __ZN3CPU7executeER6Memoryi, symObjAddr: 0x1A8, symBinAddr: 0x100003D5C, symSize: 0x100 }
+  - { offset: 0x324, size: 0x8, addend: 0x0, symName: __ZN6Memory11intitializeEv, symObjAddr: 0x2A8, symBinAddr: 0x100003E5C, symSize: 0x58 }
+  - { offset: 0x364, size: 0x8, addend: 0x0, symName: __ZN3CPU9FetchByteER6MemoryRi, symObjAddr: 0x300, symBinAddr: 0x100003EB4, symSize: 0x64 }
+...
